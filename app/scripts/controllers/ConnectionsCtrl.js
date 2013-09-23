@@ -8,6 +8,7 @@ angular.module('webworker')
     SharedWorker.on('$connections', function (event) {
       $scope.$apply(function () {
         $scope.ports = event.connections;
+        $scope.id = SharedWorker.getId();
       });
     });
 

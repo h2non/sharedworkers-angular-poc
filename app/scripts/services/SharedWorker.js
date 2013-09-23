@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('webworker')
-  .factory('SharedWorker', 
+  .factory('SharedWorker',
     function ($window) {
 
       var worker,
@@ -18,7 +18,7 @@ angular.module('webworker')
       }
 
       worker = new SharedWorker('scripts/workers/shared.js');
-      
+
       function send(channel, data) {
         worker.port.postMessage({ channel: channel, data: data });
       }
@@ -45,8 +45,8 @@ angular.module('webworker')
           dispatchListeners('$connections', { connections: connections });
         }
 
-        if (portId === null) {
-          portId = data.portId;
+        if (id === null) {
+          id = portId;
         }
       }
 
@@ -59,7 +59,7 @@ angular.module('webworker')
       function clean(channel, fn) {
         listeners = listeners.filter(function (listener) {
           var filter;
-          if (fn) { 
+          if (fn) {
             listener.channel !== channel && listener.handler === fn;
           } else {
             filter = listener.channel !== channel;
@@ -78,6 +78,10 @@ angular.module('webworker')
         }
       }
 
+      function getId() {
+        return id;
+      }
+
       worker.port.addEventListener('message',
         function (event) {
           fireEvent(event);
@@ -86,12 +90,13 @@ angular.module('webworker')
 
       worker.port.start();
 
-      return { 
+      return {
         worker: worker,
         on: onEvent,
         clean: clean,
         cleanAll: cleanAll,
-        send: send
+        send: send,
+        getId: getId
       };
     }
   );

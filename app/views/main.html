@@ -1,9 +1,12 @@
 
       <div class="masthead">
-        <h3 class="muted">Shared WebWorkers + AngularJS PoC
-          <span class="pull-right label label-success"><a class="no-link" href="#/" target="_blank">open new tab</a></span>
-          <span ng-controller="ConnectionsCtrl" class="connections pull-right label label-success">opened ports: {{ports}}</span>
-        </h3>
+        <div ng-controller="ConnectionsCtrl">
+          <h3 class="muted">Shared WebWorkers + AngularJS PoC
+            <span class="pull-right label label-success"><a class="no-link" href="#/" target="_blank">open new tab</a></span>
+            <span class="connections pull-right label label-success">opened ports: {{ports}}</span>
+            <span class="connections pull-right label label-success">your port: {{id}}</span>
+          </h3>
+        </div>
         <div class="navbar" ng-controller="NavCtrl">
           <div class="navbar-inner">
             <div class="container">
@@ -56,10 +59,20 @@
             </li>
           </ul>
        </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+        <div class="span4" ng-controller="MessagesCtrl">
+          <h2>Messages</h2>
+          <div class="alert" ng-show="visible('error')">
+            <button type="button" class="close" ng-click="close('error')">&times;</button>
+            <strong>Warning!</strong> Best check yo self, you're not looking too good.
+          </div>
+          <div class="alert alert-success" ng-show="visible('success')">
+            <button type="button" class="close" ng-click="close('success')">&times;</button>
+            <strong>Well done!</strong> You successfully read this important alert message.
+          </div>
+          <div class="alert alert-info" ng-show="visible('info')">
+            <button type="button" class="close" ng-click="close('info')">×</button>
+            <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+            </div>
         </div>
       </div>
 
