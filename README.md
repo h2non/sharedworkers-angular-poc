@@ -4,7 +4,7 @@
 1. Clone this repository
 
   ```
-  $ git clone https://github.com/h2non/sharedworkers-angular-poc.git && cd sharedworkers-angular-poc
+  $ git clone https://github.com/h2non/sharedworkers-angular-poc.git
   ```
 
 2. From the cloned repository directory, run:
