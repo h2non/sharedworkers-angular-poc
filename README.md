@@ -1,5 +1,4 @@
-# Shared WebWorkers + AngularJS proof of concept
-
+# Shared WebWorkers + AngularJS PoC
 ## Test
 
 1. Clone this repository
