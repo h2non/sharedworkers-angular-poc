@@ -12,7 +12,6 @@ angular.module('webworker')
 
     SharedWorker.on('user.form.logged', function (event) {
       $scope.$apply(function () {
-        console.log(event);
         $scope.logged = event.logged;
       });
     });

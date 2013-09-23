@@ -1,6 +1,9 @@
 
       <div class="masthead">
-        <h3 class="muted">Shared WebWorkers + AngularJS PoC <span ng-controller="ConnectionsCtrl" class="pull-right label label-success">opened ports: {{ports}}</span></h3>
+        <h3 class="muted">Shared WebWorkers + AngularJS PoC
+          <span class="pull-right label label-success"><a class="no-link" href="#/" target="_blank">open new tab</a></span>
+          <span ng-controller="ConnectionsCtrl" class="connections pull-right label label-success">opened ports: {{ports}}</span>
+        </h3>
         <div class="navbar" ng-controller="NavCtrl">
           <div class="navbar-inner">
             <div class="container">
@@ -42,10 +45,16 @@
             <a class="btn btn-success" href="#/">You are already logged!</a>
           </p>
         </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+        <div class="span4" ng-controller="SearchCtrl">
+          <h2>Search</h2>
+          <form class="form-search">
+            <input type="text" class="input-large search-query" ng-model="search">
+          </form>
+          <ul class="nav nav-pills nav-stacked" ng-show="search">
+            <li ng-repeat="user in users | filter: search">
+              <a ng-click="select(user)" href="#/">{{user}}</a>
+            </li>
+          </ul>
        </div>
         <div class="span4">
           <h2>Heading</h2>
@@ -57,6 +66,6 @@
       <hr>
 
       <div class="footer">
-        <p>Shared WebWorkers + AngularJS PoC</p>
+        <p><a href="https://github.com/h2non/sharedworkers-angular-poc">Shared WebWorkers + AngularJS PoC</a> by Tomas Aparicio</p>
       </div>
 

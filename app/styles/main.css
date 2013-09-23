@@ -24,3 +24,11 @@ body {
 textarea {
   width:98%;
 }
+
+.no-link {
+  color: #FFF !important;
+}
+
+.connections {
+  margin-right: 10px;
+}

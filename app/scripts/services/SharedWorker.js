@@ -6,7 +6,7 @@ angular.module('webworker')
 
       var worker,
           ports = 0,
-          portId = null,
+          id = null,
           listeners = [];
 
       if (typeof $window.Worker !== 'function') {
@@ -26,6 +26,7 @@ angular.module('webworker')
       function fireEvent(event) {
         var data = event.data.data,
             channel = event.data.channel,
+            portId = event.data.portId,
             connections = event.data.connections;
 
         function dispatchListeners(channel, data) {
@@ -35,8 +36,8 @@ angular.module('webworker')
             }
           });
         }
-        debugger;
-        if (data.portId !== portId) {
+
+        if (id !== portId) {
           dispatchListeners(channel, data);
         }
 
