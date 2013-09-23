@@ -3,15 +3,19 @@
 
 1. Clone this repository
 
+  ```
+  $ git clone https://github.com/h2non/sharedworkers-angular-poc.git
+  ```
+
 2. From the cloned repository directory, run:
 
   ```
   $ npm install
   ```
 
-3. Test
+3. Start the server
 
-  The process assumes you already have installed grunt-cli as global package and it's via $PATH accesible
+  This process assumes you already have installed grunt-cli as global package and it's via $PATH accesible
 
   ```
   $ grunt server
