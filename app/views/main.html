@@ -1,0 +1,62 @@
+
+      <div class="masthead">
+        <h3 class="muted">Shared WebWorkers + AngularJS PoC <span ng-controller="ConnectionsCtrl" class="pull-right label label-success">opened ports: {{ports}}</span></h3>
+        <div class="navbar" ng-controller="NavCtrl">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li ng-click="select(0)" ng-class="{ active: isActive(0) }"><a href="#/">Home</a></li>
+                <li ng-click="select(1)" ng-class="{ active: isActive(1) }"><a href="#/">Projects</a></li>
+                <li ng-click="select(2)" ng-class="{ active: isActive(2) }"><a href="#/">Services</a></li>
+                <li ng-click="select(3)" ng-class="{ active: isActive(3) }"><a href="#/">Downloads</a></li>
+                <li ng-click="select(4)" ng-class="{ active: isActive(4) }"><a href="#/">About</a></li>
+                <li ng-click="select(5)" ng-class="{ active: isActive(5) }"><a href="#/">Contact</a></li>
+                <li ng-switch="login">
+                  <button ng-click="switchLogin()" ng-switch-when="true" class="btn btn-success">Login</button>
+                  <button ng-click="switchLogin()" ng-switch-when="false" class="btn btn-danger">Logout</button>
+                </li>
+              </ul >
+            </div>
+          </div>
+        </div><!-- /.navbar -->
+      </div>
+
+      <!-- Jumbotron -->
+      <div class="jumbotron" ng-controller="TextboxCtrl">
+        <h2>Shared WebWorkers playground!</h2>
+        <textarea ng-model="text" rows="5"></textarea>
+      </div>
+
+      <hr>
+
+      <!-- Example row of columns -->
+      <div class="row-fluid">
+        <div class="span4" ng-controller="LoginFormCtrl">
+          <h2>Login form</h2>
+          <form class="form-inline" ng-show="!logged">
+            <input type="text" class="input-small" placeholder="Email">
+            <input type="password" class="input-small" placeholder="Password">
+            <button type="submit" ng-click="login()" class="btn">Sign in</button>
+          </form>
+          <p ng-show="logged">
+            <a class="btn btn-success" href="#/">You are already logged!</a>
+          </p>
+        </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+       </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="footer">
+        <p>Shared WebWorkers + AngularJS PoC</p>
+      </div>
+
