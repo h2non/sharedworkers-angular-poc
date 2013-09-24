@@ -41,7 +41,7 @@ This process assumes you already have installed node.js in your system, and grun
   $ grunt server
   ```
 
-4. Open diferent browser windows (both visible) and start playing with the elements.
+4. Open diferent browser windows and start playing with the elements.
 
 ## Browser support
 
