@@ -17,6 +17,10 @@ This proof of concept aims to test some features of Web Shared WebWorkers and An
 
 ## Test it
 
+[Click here](http://h2non.github.io/sharedworkers-angular-poc/) for access to the live demo page
+
+### Local
+
 This process assumes you already have installed node.js in your system, and grunt-cli and bower as global packages and both are via $PATH accesible
 
 1. Clone this repository
