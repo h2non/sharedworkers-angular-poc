@@ -1,24 +1,52 @@
 'use strict';
 
-var ports = []; // store all
+var ports = []; // store
+var portCounter = 0;
 
-self.addEventListener("connect", function (event) {
+self.addEventListener('connect', function (event) {
 
   var port = event.ports[0];
-  var portId = ports.length + 1;
+  port.id = portCounter += 1;
   ports.push(port);
 
-  function dispatchAll(event) {
+  function closeAll() {
     ports.forEach(function (port) {
-      event.data.connections = ports.length;
-      event.data.portId = portId;
-      port.postMessage(event.data);
+      port.close();
     });
+    ports = [];
+    portCounter = 0;
   }
 
-  port.addEventListener("message", function (event) {
-    dispatchAll(event);
-  }, false);
+  function dispatchAll(event) {
+    var data = event.data;
+
+    ports.forEach(function (port) {
+      if (port.id !== data.emitterId) {
+        data.connections = ports.length;
+        data.portId = port.id;
+        port.postMessage(data);
+      }
+    });
+
+    if (data.channel === '$close' || data.channel === '$closeAll') {
+      if (data.portId) {
+        ports = ports.filter(function (port) {
+          if (port.id === data.emitterId) {
+            port.close();
+            return false;
+          } else {
+            return true;
+          }
+        });
+      } else {
+        closeAll();
+      }
+    }
+
+  }
+
+  port.addEventListener('message', dispatchAll, false);
+  port.addEventListener('error', dispatchAll, false);
 
   port.start();
 

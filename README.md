@@ -4,15 +4,20 @@ Web Workers allow you to do things like fire up long-running scripts to handle c
 
 Workers utilize thread-like message passing to achieve parallelism. They're perfect for keeping your UI refresh, performant, and responsive for users.
 
-Shared WebWorker allow you to share a Worker thread across different applications instances in the same browser, 
-so you can communicate them without server communication like WebSockets or XHR.
+Shared WebWorker allow you to share a Worker thread across different applications instances in the same browser, so you can communicate them without server communication like WebSockets or XHR.
 
 ## More information
 
 - [W3C specification](http://www.w3.org/TR/workers)
 - [HTML5Rocks tutorial](http://www.html5rocks.com/en/tutorials/workers/basics/) 
 
+## About
+
+This proof of concept aims to test some features of Web Shared and AngularJS two-way DOM data binding, sharing data states and application events across multiple windows instances using a basic implementation of a event bus service.
+
 ## Test it
+
+This process assumes you already have installed node.js in your system, and grunt-cli and bower as global packages and both are via $PATH accesible
 
 1. Clone this repository
 
@@ -26,13 +31,17 @@ so you can communicate them without server communication like WebSockets or XHR.
   $ npm install
   ```
 
-3. Start the server
+  ```
+  $ bower install
+  ```
 
-  This process assumes you already have installed grunt-cli as global package and it's via $PATH accesible
+3. Start the server
 
   ```
   $ grunt server
   ```
+
+4. Open diferent browser windows (both visible) and start playing with the elements.
 
 ## Browser support
 

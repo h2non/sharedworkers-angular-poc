@@ -29,6 +29,16 @@ textarea {
   color: #FFF !important;
 }
 
-.connections {
+.margin-right {
   margin-right: 10px;
+}
+
+.notifications {
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+}
+
+.notifications ul {
+  list-style-type: none;
 }
