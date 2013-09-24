@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('webworker')
-  .controller('SearchCtrl', function ($scope, SharedWorker) {
+  .controller('SearchCtrl', function ($scope, SharedWorkerSrv) {
 
     $scope.search = null;
 
     $scope.users = [
-      "john", "bill", "charlie", 
-      "robert", "alban", "oscar", 
-      "marie", "celine", "brad", 
+      "john", "bill", "charlie",
+      "robert", "alban", "oscar",
+      "marie", "celine", "brad",
       "drew", "rebecca", "michel",
-      "francis", "jean", "paul", 
-      "pierre", "nicolas", "alfred", 
-      "gerard", "louis", "albert", 
-      "edouard", "benoit", "guillaume", 
+      "francis", "jean", "paul",
+      "pierre", "nicolas", "alfred",
+      "gerard", "louis", "albert",
+      "edouard", "benoit", "guillaume",
       "nicolas", "joseph"
     ];
 
@@ -22,11 +22,11 @@ angular.module('webworker')
     };
 
     $scope.$watch('search', _.throttle(function () {
-        SharedWorker.send('main.search.change', { value: arguments[0] });
+        SharedWorkerSrv.send('main.search.change', { value: arguments[0] });
       }, 500)
     );
 
-    SharedWorker.on('main.search.change', function (event) {
+    SharedWorkerSrv.on('main.search.change', function (event) {
       $scope.$apply(function () {
         $scope.search = event.value;
       });

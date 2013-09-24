@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('webworker')
-  .controller('ConnectionsCtrl', function ($scope, SharedWorker) {
+  .controller('ConnectionsCtrl', function ($scope, SharedWorkerSrv) {
 
     $scope.ports = 1;
 
-    SharedWorker.on('$connections', function (event) {
+    SharedWorkerSrv.on('$connections', function (event) {
       $scope.$apply(function () {
         $scope.ports = event.connections;
-        $scope.id = SharedWorker.getId();
+        $scope.id = SharedWorkerSrv.getId();
       });
     });
 

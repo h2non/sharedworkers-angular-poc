@@ -1,15 +1,19 @@
 'use strict';
 
 angular.module('webworker')
-  .controller('NavCtrl', function ($scope, SharedWorker) {
+  .controller('NavCtrl', function ($scope, SharedWorkerSrv) {
 
     var selected = 0;
+
+    function apply() {
+
+    }
 
     $scope.login = true;
 
     $scope.select = function (id) {
       selected = id;
-      SharedWorker.send('nav.menu.selectchange', { id: id });
+      SharedWorkerSrv.send('nav.menu.selectchange', { id: id });
     };
 
     $scope.isActive = function (id) {
@@ -18,16 +22,16 @@ angular.module('webworker')
 
     $scope.switchLogin = function () {
       $scope.login = $scope.login ? false : true;
-      SharedWorker.send('nav.menu.login', { status: $scope.login });
+      SharedWorkerSrv.send('nav.menu.login', { status: $scope.login });
     };
 
-    SharedWorker.on('nav.menu.selectchange', function (event) {
+    SharedWorkerSrv.on('nav.menu.selectchange', function (event) {
       $scope.$apply(function () {
         selected = event.id;
       });
     });
 
-    SharedWorker.on('nav.menu.login', function (event) {
+    SharedWorkerSrv.on('nav.menu.login', function (event) {
       $scope.$apply(function () {
         $scope.login = event.status;
       });

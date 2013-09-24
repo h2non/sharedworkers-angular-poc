@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('webworker')
-  .controller('MessagesCtrl', function ($scope, SharedWorker) {
+  .controller('MessagesCtrl', function ($scope, SharedWorkerSrv) {
 
     var messages = {
       success: true,
@@ -11,14 +11,14 @@ angular.module('webworker')
 
     $scope.close = function (type) {
       messages[type] = false;
-      SharedWorker.send('main.notifications.messages', { messages: messages });
+      SharedWorkerSrv.send('main.notifications.messages', { messages: messages });
     };
 
     $scope.visible = function (type) {
       return messages[type];
     };
 
-    SharedWorker.on('main.notifications.messages', function (event) {
+    SharedWorkerSrv.on('main.notifications.messages', function (event) {
       $scope.$apply(function () {
         messages = event.messages;
       });
