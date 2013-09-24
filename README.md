@@ -13,7 +13,7 @@ Shared WebWorker allow you to share a Worker thread across different application
 
 ## About
 
-This proof of concept aims to test some features of Web Shared and AngularJS two-way DOM data binding, sharing data states and application events across multiple windows instances using a basic implementation of a event bus service.
+This proof of concept aims to test some features of Web Shared WebWorkers and AngularJS two-way DOM data binding, sharing data states and application events across multiple windows instances using a basic implementation of a event bus service.
 
 ## Test it
 
