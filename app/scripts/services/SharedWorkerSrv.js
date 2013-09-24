@@ -18,7 +18,7 @@ angular.module('webworker')
         throw new Error('Shared Web Workers not supported. Try with a modern browser');
       }
 
-      worker = new SharedWorker('scripts/workers/shared.js');
+      worker = new $window.SharedWorker('scripts/workers/shared.js');
 
       function buildEventObj(data) {
         return _.extend({
@@ -52,7 +52,6 @@ angular.module('webworker')
           portId = event.data.portId;
         }
 
-        console.log('New event!');
         console.log(event);
 
         if (event.type === 'error') {
